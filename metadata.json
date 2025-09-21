@@ -1,0 +1,5 @@
+{
+  "name": "Student Progress Tracker",
+  "description": "An assistant to upload a single Excel sheet with student data, generate interactive cards for each student, and allow for adding, editing, and selecting student records.",
+  "requestFramePermissions": []
+}
