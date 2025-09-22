@@ -39,7 +39,7 @@ interface CandidatePayload {
 
 // Status messages
 const statusMessages: Record<string, string> = {
-  [Status.Completed]: `Congratulations, we sincerely appreciate the dedication you have shown in completing the courses. We encourage you to continue with your efforts.`,
+  [Status.Completed]: `Congratulations, we sincerely appreciate the dedication you have shown in completing the Chapters. We encourage you to continue with your efforts.`,
   [Status.InProgress]: `We appreciate the effort you are putting in, and we kindly request you to expedite the completion of the lectures within the allocated timeframe. We would like to hear about any difficulties or challenges you may be facing.`,
   [Status.NoProgress]: `We appreciate the effort you are putting in, and we kindly request you to expedite the completion of the lectures within the allocated timeframe. We would like to hear about any difficulties or challenges you may be facing.`,
 };
@@ -92,22 +92,22 @@ app.post("/send-mails", async (req: ExpressRequest, res: ExpressResponse) => {
       await transporter.sendMail({
         from: `MedTrain Team <contact@med-train.com>`,
         to: candidate.email,
-        subject: "Your Learners Report - AUGUST 2025",
+        subject: "Progress Report - AUGUST 2025",
         html: `
           <h3>Dear ${candidate.name},</h3>
           <br>
           <p>Greetings from MedTrain - Allergy Asthma Specialist Course.</p>
           <p>Please find the below-mentioned table of your progress for the month of August 2025.</p>
-          <p><b>Chapter Completion:</b> ${candidate.chapterCompletion}</p>
+          <p><b>Chapter Completion:</b> ${candidate.chapterCompletion} | Chapter Completion Status:</b> ${candidate.status}</p>
           <p><b>Assessment:</b> ${candidate.marksObtained}/${candidate.maxMarks}</p>
           ${ocsSection}
-          <p><b>Status:</b> ${candidate.status}</p>
+          
           <p>${statusMessage}</p>
           <p>For Technical and Academic challenges please contact - 7975764489.</p>
           <p>Note: We request you to rename yourself to your registered name during online sessions to ensure your attendance is marked correctly.</p>
           <p><b>Note</b>:<li>Step 1️⃣ | Finish Viewing the Video on your Media Player.</li>
           <li>Step 2️⃣ | Click on the "Complete & Continue" button located at the Bottom Right of the media player. (On some devices, you might find this option under the 3 dots ⋮ Menu button at the Top Right of the media player).</li>
-          <p>Kindly Ignore the above message if already done.</p>
+         
           <br>
           <p>Thanks and Regards,</p>
           <p>MedTrain Team</p>

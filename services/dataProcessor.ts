@@ -74,9 +74,9 @@ export const processSheetData = (data: RawCandidateData[], thresholds: { noProgr
         }
 
         const completedChapters = Number(getValue(row, "CompletedChapters") || 0);
-        const totalChapters = Number(getValue(row, "TotalChapers") || 0); // Corrected typo from image 'TotalChapers'
+        const totalChapters = Number(getValue(row, "TotalChapters") || 0); // Corrected typo from image 'TotalChapters'
         if (totalChapters === 0) { // If TotalChapters is 0 or not present, try "Total Chapters"
-             const altTotal = Number(getValue(row, "Total Chapters") || 1);
+             const altTotal = Number(getValue(row, "TotalChapters") || 1);
              Object.assign(row, { totalChapters: altTotal });
         }
         
@@ -90,7 +90,7 @@ export const processSheetData = (data: RawCandidateData[], thresholds: { noProgr
             phone: String(getValue(row, "phone") || ''),
             completedChapters,
             totalChapters,
-            marks: Number(getValue(row, "Marks") || 0),
+            marks: Number(getValue(row, "Scored") || 0),
             maxMarks: Number(getValue(row, "MaxMarks") || 0),
             skipped: Number(getValue(row, "Skipped") || 0),
             ocs1: String(getValue(row, "OCS1") || 'N/A'),
